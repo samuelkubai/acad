@@ -26,7 +26,7 @@ export default class Fellow {
     let masteredSkills = 0;
 
     this.iols.forEach(point => {
-      if (point.value >= point.target) {
+      if (point.value !== 0 && point.value >= point.target) {
         masteredSkills += 1;
       }
     });
@@ -44,7 +44,7 @@ export default class Fellow {
       }
     });
 
-    return ((readySkills/this.skills_length)*100);
+    return ((readySkills/this.skills_length)*100).toFixed(0);
   }
 
   get velocity () {
@@ -61,11 +61,11 @@ export default class Fellow {
     return this.iols.length;
   }
 
-  get phase () {
-    return Math.floor(this.weeks/4)
-  }
-
   get weeks () {
     return this.fellow.weeksInLatestPhase;
+  }
+
+  get phase () {
+    return Math.ceil(this.weeks/4)
   }
 }

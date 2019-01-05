@@ -2,6 +2,7 @@ import _ from 'lodash';
 import * as Promise from 'bluebird';
 import IOL from './IOL';
 import debug from 'debug';
+import Env from '../../config/environment'
 
 const logger = debug('app:repositories');
 
@@ -19,7 +20,7 @@ export default class Gitbase {
     this.commit_hashes = [];
 
     // Authenticate the Github requests.
-    octokit.authenticate({ type: 'oauth', token: '3d0b7dd97e04a22e7ad139d4c4dd1b8f80783168' });
+    octokit.authenticate({ type: 'oauth', token: Env.GITHUB_TOKEN });
 
     // Fetch all the commits from all related repositories
     this.commits = await Promise.map(repos, async repo => {
