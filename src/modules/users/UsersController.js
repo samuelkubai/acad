@@ -58,7 +58,7 @@ class UsersController {
 
       return {
         name: user.name,
-        phase: 2,
+        phase: fellow.phase,
         picture: user.profile_picture,
         readiness: `${fellow.readiness}%`,
         velocity: `${fellow.velocity}/wk`,
