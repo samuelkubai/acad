@@ -38,6 +38,12 @@ module.exports = {
         name: 'Redux',
         slug: 'redux',
         icon: "https://res.cloudinary.com/kubai/image/upload/v1545281183/atom.svg",
+      },
+      {
+        id: 7,
+        name: 'Jest',
+        slug: 'jest',
+        icon: "https://res.cloudinary.com/kubai/image/upload/v1546791876/jest-icon.svg",
       }
     ], {});
   },

@@ -6,22 +6,26 @@ module.exports = {
       {
         id: 1,
         name: 'Apprenticeship',
-        slug: 'D0B'
+        slug: 'D0B',
+        duration: 12
       },
       {
         id: 2,
         name: 'Simulations',
-        slug: 'D0A'
+        slug: 'D0A',
+        duration: 12
       },
       {
         id: 3,
         name: 'Bench',
-        slug: 'bench'
+        slug: 'bench',
+        duration: 12
       },
       {
         id: 4,
         name: 'Pre-fellowship',
-        slug: 'pre-fellowship'
+        slug: 'pre-fellowship',
+        duration: 12
       }
     ], {});
   },

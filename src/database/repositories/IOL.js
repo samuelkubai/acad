@@ -6,6 +6,7 @@ import debug from "debug";
 import Cache from "../../services/Cache";
 
 const logger = debug('app:repositories');
+const error = debug('app:error');
 
 export default class IOL {
   constructor(commit_hashes) {

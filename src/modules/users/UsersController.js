@@ -64,7 +64,7 @@ class UsersController {
         velocity: `${fellow.velocity}/wk`,
         skills: `${fellow.skillsMastered}/${fellow.skills_length}`,
         team: user.team.name,
-        status: 'ready',
+        status: fellow.status,
         username: user.username
       }
     }, { concurrency: 1 });

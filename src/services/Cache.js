@@ -36,8 +36,6 @@ export default class Cache {
 
     // Return the value cached if cache exists
     if (cacheValue) {
-      logger(`Cache: Query ${query} retrieved from cache`);
-
       return JSON.parse(cacheValue);
     }
 

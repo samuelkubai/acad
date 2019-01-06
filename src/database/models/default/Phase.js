@@ -6,6 +6,9 @@ export default (sequelize, DataTypes) => {
       },
       slug: {
         type: DataTypes.STRING,
+      },
+      duration: {
+        type: DataTypes.INTEGER,
       }
     },
     { tableName: 'phases'}
