@@ -61,6 +61,7 @@ class UsersController {
         phase: fellow.phase,
         picture: user.profile_picture,
         readiness: `${fellow.readiness}%`,
+        raw_velocity: fellow.velocity,
         velocity: `${fellow.velocity}/wk`,
         skills: `${fellow.skillsMastered}/${fellow.skills_length}`,
         team: user.team.name,
@@ -69,10 +70,30 @@ class UsersController {
       }
     }, { concurrency: 1 });
 
+    // Build the team stats
+    const teamStats = {
+      ready_fellows: 0,
+      fellows_on_track: 0,
+      team_total_velocity: 0
+    };
+
+    userResponse.map(user => {
+      if (user.status === 'ready' || user.status === 'on-track') {
+        teamStats.fellows_on_track += 1;
+
+        if (user.status === 'ready') {
+          teamStats.ready_fellows += 1;
+        }
+      }
+
+      teamStats.team_total_velocity += user.raw_velocity;
+    });
+
     res.status(200)
       .json({
         data: {
-          users: userResponse
+          users: userResponse,
+          team_stats: teamStats
         },
         meta: {
           count: users.length
