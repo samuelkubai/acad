@@ -16,9 +16,6 @@ export default class Gitbase {
   }
 
   async initialize() {
-    this.commits = [];
-    this.commit_hashes = [];
-
     // Authenticate the Github requests.
     octokit.authenticate({ type: 'oauth', token: Env.GITHUB_TOKEN });
 
@@ -28,16 +25,21 @@ export default class Gitbase {
 
       logger(`Gitbase: (${this.username}) got ${response.data.length} commits authored on the ${repo} github repo by ${this.username}`);
 
-      return response.data;
+      const commit_hashes = _.flattenDeep(response.data).map(commit => commit.sha);
+
+      return await Promise.map(commit_hashes, async sha => {
+        const response = await octokit.repos.getCommit({owner, repo, sha});
+
+        return response.data;
+      });
     });
 
     this.commits = _.flattenDeep(this.commits);
-    this.commit_hashes = this.commits.map(commit => commit.sha);
 
-    logger(`Gitbase: (${this.username}) got a total of ${this.commit_hashes.length} commits authored by ${this.username} from Github`);
+    logger(`Gitbase: (${this.username}) got a total of ${this.commits.length} commits authored by ${this.username} from Github`);
   }
 
   get IOL() {
-    return new IOL(this.commit_hashes);
+    return new IOL(this.commits);
   }
 }

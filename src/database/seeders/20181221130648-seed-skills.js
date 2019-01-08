@@ -56,7 +56,7 @@ module.exports = {
         id: 8,
         label: "Building react components",
         slug: "react-components",
-        regex: ".*/components/.*/.*",
+        regex: ".*/components/(?!__tests__).*/.*",
         stack_id: 2
       },
       {
