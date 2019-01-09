@@ -70,7 +70,7 @@ class UsersController {
         skills: `${fellow.skillsMastered}/${fellow.skills_length}`,
         team: user.team.name,
         status: fellow.status,
-        username: user.username
+        email: user.email
       }
     }, { concurrency: 1 });
 
