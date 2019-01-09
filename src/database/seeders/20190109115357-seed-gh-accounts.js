@@ -135,6 +135,36 @@ module.exports = {
         email: 'rachaelasami@Rachaels-MacBook-Pro.local',
         username: 'rachaelasami@Rachaels-MacBook-Pro.local',
       },
+      {
+        id: 24,
+        user_id: 3,
+        email: 'johnmutuma5@gmail.com',
+        username: 'johnmutuma5@gmail.com',
+      },
+      {
+        id: 25,
+        user_id: 3,
+        email: 'john.mutuma@andela.com',
+        username: 'john.mutuma@andela.com',
+      },
+      {
+        id: 26,
+        user_id: 5,
+        email: 'ademola.ariya@andela.com',
+        username: 'ademola.ariya@andela.com',
+      },
+      {
+        id: 27,
+        user_id: 10,
+        email: 'michaelnthiwa@michaels-MacBook-Pro-2.local',
+        username: 'michaelnthiwa@michaels-MacBook-Pro-2.local'
+      },
+      {
+        id: 28,
+        user_id: 14,
+        email: '4fr0c0d3@Moffats-MacBook-Pro.local',
+        username: '4fr0c0d3@Moffats-MacBook-Pro.local'
+      }
     ], {});
   },
 

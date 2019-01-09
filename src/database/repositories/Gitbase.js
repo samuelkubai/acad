@@ -30,7 +30,7 @@ export default class Gitbase {
         return raw_response.data
       });
 
-      const commit_hashes = _.flattenDeep(response).map(commit => commit.sha);
+      const commit_hashes = _.uniq(_.flattenDeep(response).map(commit => commit.sha));
 
       logger(`Gitbase: (${this.email}) got ${commit_hashes.length} commits authored on the ${repo} github repo by ${this.email}`);
 
