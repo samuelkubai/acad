@@ -12,7 +12,7 @@ export default class IOL {
     this.commits = _.flattenDeep(commits);
   }
 
-  async all(username) {
+  async all(email) {
     // Fetch the all the appropriate skills; with stack and target
     const skills = await Models.Skill.findAll({
       include: [
@@ -27,7 +27,7 @@ export default class IOL {
       ]
     });
 
-    logger(`IOL: (${username}) fetched ${skills.length} related skill(s)`);
+    logger(`IOL: (${email}) fetched ${skills.length} related skill(s)`);
 
     // Fetch the number of IOL for each skill
     return await Promise.map(skills, async skill => {
@@ -35,10 +35,10 @@ export default class IOL {
 
       try {
         iol = this.findByRegex(skill.regex);
-        logger(`IOL: (${username}) Retrieved ${iol.length} instances of learning for ${skill.label} using the regex ${skill.regex}`);
+        logger(`IOL: (${email}) Retrieved ${iol.length} instances of learning for ${skill.label} using the regex ${skill.regex}`);
 
       } catch (e) {
-        error(`IOL: (${username}) Error occurred while fetching instances of learning for ${skill.label}\nReason: ${e.message}\n`);
+        error(`IOL: (${email}) Error occurred while fetching instances of learning for ${skill.label}\nReason: ${e.message}\n`);
       }
 
       return {
@@ -60,7 +60,7 @@ export default class IOL {
     }, []);
   }
 
-  async timeline(username) {
+  async timeline(email) {
     const occurrencesMap = {};
     const timeline = [];
 
@@ -76,7 +76,7 @@ export default class IOL {
       }
     }
 
-    logger(`IOL: (${username}) got ${timeline.length} data points for the timeline`);
+    logger(`IOL: (${email}) got ${timeline.length} data points for the timeline`);
 
     return timeline;
   }

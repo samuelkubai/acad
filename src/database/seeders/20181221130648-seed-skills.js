@@ -189,7 +189,7 @@ module.exports = {
         id: 27,
         label: "Writing proper mocks on NodeJS applications",
         slug: "node-mocks",
-        regex: ".*/_mocks_/.*",
+        regex: ".*mocks.*",
         stack_id: 1
       },
       {

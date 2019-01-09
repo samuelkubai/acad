@@ -8,9 +8,13 @@ class AnalyticsController {
         {
           as: 'phases',
           model: Models.Phase
+        },
+        {
+          as: 'gh_accounts',
+          model: Models.GHAccount
         }
       ],
-      where: { username: req.query.username }
+      where: { email: req.query.email }
     });
 
     const fellow = (new Fellow(user));

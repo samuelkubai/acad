@@ -8,9 +8,6 @@ export default (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING
       },
-      username: {
-        type: DataTypes.STRING
-      },
       email: {
         type: DataTypes.STRING
       },
@@ -35,6 +32,11 @@ export default (sequelize, DataTypes) => {
       as: 'team',
       foreignKey: 'team_id'
     });
+
+    User.hasMany(models.GHAccount, {
+      as: 'gh_accounts',
+      foreignKey: 'user_id'
+    })
   };
 
   return User;

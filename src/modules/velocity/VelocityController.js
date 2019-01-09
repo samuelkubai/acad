@@ -11,24 +11,28 @@ class VelocityController {
         {
           as: 'phases',
           model: Models.Phase
+        },
+        {
+          as: 'gh_accounts',
+          model: Models.GHAccount
         }
       ],
-      where: { username:  req.query.username }
+      where: { email:  req.query.email }
     });
 
-    logger(`VelocityController: (${fellow.username}) picked up the fellow ${fellow.name}`);
+    logger(`VelocityController: (${fellow.email}) picked up the fellow ${fellow.name}`);
 
-    const gitbase = new Gitbase({ username: fellow.username });
+    const gitbase = new Gitbase({ email: fellow.email, usernames: fellow.gh_accounts.map(account => account.username) });
     await gitbase.initialize();
 
     const [stacks, feed] = await Promise.all([
       Models.Stack.findAll(),
-      gitbase.IOL.all(fellow.username)
+      gitbase.IOL.all(fellow.email)
     ]);
 
     // NOTE: Leaving this query out of the promise all call in order to take advantage of the
     // potentially cached query in the IOL.all() call.
-    const timeline = await gitbase.IOL.timeline(fellow.username);
+    const timeline = await gitbase.IOL.timeline(fellow.email);
 
     res.status(200)
       .json({

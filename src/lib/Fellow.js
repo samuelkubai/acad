@@ -16,14 +16,13 @@ export default class Fellow {
   }
 
   async refreshStats() {
-    const gitbase = new Gitbase({ username: this.fellow.username });
+    const gitbase = new Gitbase({ email: this.fellow.email, usernames: this.fellow.gh_accounts.map(account => account.username) });
     await gitbase.initialize();
 
-    this.iols = await gitbase.IOL.all(this.fellow.username);
+    this.iols = await gitbase.IOL.all(this.fellow.email);
   }
 
   get skillsMastered() {
-    // Attain the level of skill mastery for a fellow.
     let masteredSkills = 0;
 
     this.iols.forEach(point => {

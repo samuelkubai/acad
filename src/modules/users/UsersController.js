@@ -45,6 +45,10 @@ class UsersController {
         {
           as: 'phases',
           model: Models.Phase
+        },
+        {
+          as: 'gh_accounts',
+          model: Models.GHAccount
         }
       ]
     });
