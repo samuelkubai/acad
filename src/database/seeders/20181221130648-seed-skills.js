@@ -77,14 +77,14 @@ module.exports = {
         id: 11,
         label: "Building react higher order components",
         slug: "react-higher-order-components",
-        regex: ".*/hoc/.*",
+        regex: "..*hoc.*|.*Hoc.*",
         stack_id: 2
       },
       {
         id: 12,
         label: "Testing react higher order components",
         slug: "testing-react-higher-order-components",
-        regex: ".*/hoc/__tests__/.*",
+        regex: ".*/hoc/__tests__/.*|.*/Hoc/__tests__/.*",
         stack_id: 7
       },
       {
