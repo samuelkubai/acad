@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('user_phases', {
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       phase_id: {
         type: Sequelize.INTEGER

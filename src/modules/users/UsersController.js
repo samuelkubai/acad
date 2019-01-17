@@ -140,10 +140,32 @@ class UsersController {
       profile_picture: response.data.picture
     });
 
+    // Assign a phase to the user
+    const user_phase = await Models.UserPhase.create({
+      user_id: invited_user.id,
+      phase_id: req.body.phase,
+      started_on: Date.now()
+    });
+
+    // Attach all provided Github accounts to the user.
+    const gh_accounts = await Promise.map(req.body.usernames, async username => {
+      return await Models.GHAccount.create({
+        id: shortid.generate(),
+        username: username,
+        email: username,
+        user_id: invited_user.id
+      });
+    });
+
+
     res
       .status(201)
       .send({
-        data: invited_user,
+        data: {
+          ...invited_user.dataValues,
+          user_phase,
+          gh_accounts
+        },
         message: `Successfully invited the new user`,
         meta:{
           count: 1,
