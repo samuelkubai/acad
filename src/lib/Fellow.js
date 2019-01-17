@@ -1,4 +1,6 @@
+import axios from 'axios';
 import debug from "debug";
+import env from "../config/environment";
 import Gitbase from "../database/repositories/Gitbase";
 import moment from "moment/moment";
 
@@ -33,7 +35,6 @@ export default class Fellow {
 
     return masteredSkills;
   }
-
 
   get readiness() {
     let readySkills = 0;
@@ -82,5 +83,28 @@ export default class Fellow {
     if (this.readiness >= expectedReadiness) return `on-track`;
 
     return `off-track`
+  }
+
+  static async fellowFromAndelaAPI(email, config) {
+    try {
+      const response = await axios.get(`${env.ANDELA_API}/users?email=${email}`, { headers: { 'Authorization': `Bearer ${config.token}` }});
+
+      return {
+        data: response.data.values[0],
+        message: `User successfully fetched`,
+        success: true,
+        meta: {
+          users_count: response.data.values.length
+        }
+      };
+    } catch (e) {
+      error(`Fellow: Andela API threw the error :=> ${e.message}`);
+
+      return {
+        data: null,
+        message: e.message,
+        success: false
+      }
+    }
   }
 }

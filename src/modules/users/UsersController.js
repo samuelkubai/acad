@@ -1,6 +1,7 @@
-import debug from "debug";
-import Models from '../../database/models';
 import * as Promise from "bluebird";
+import debug from "debug";
+import shortid from "shortid";
+import Models from '../../database/models';
 import Fellow from "../../lib/Fellow";
 
 const logger = debug("app:controllers");
@@ -101,6 +102,53 @@ class UsersController {
         },
         meta: {
           count: users.length
+        }
+      });
+  }
+
+  static async inviteUser (req, res) {
+    const team = await Models.Team.findOne({
+      where: {
+        slug: req.params.team
+      }
+    });
+
+    const response = await Fellow.fellowFromAndelaAPI(req.body.email, { token: req.meta.token });
+
+    if (!response.success) {
+      res
+        .status(424)
+        .send({
+        data: null,
+        message: 'Failed to fetch fellow information from the Andela API',
+        meta: {
+          error: {
+            message: response.message
+          }
+        }
+      });
+
+      return;
+    }
+
+    const invited_user = await Models.User.create({
+      id: shortid.generate(),
+      name: response.data.name,
+      email: response.data.email,
+      andela_id: response.data.id,
+      team_id: team.id,
+      profile_picture: response.data.picture
+    });
+
+    res
+      .status(201)
+      .send({
+        data: invited_user,
+        message: `Successfully invited the new user`,
+        meta:{
+          count: 1,
+          email: req.body.email,
+          team: req.params.team
         }
       });
   }
