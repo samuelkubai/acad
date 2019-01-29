@@ -66,7 +66,7 @@ export default class Fellow {
     if (this.fellow.weeksInLatestPhase > this.fellow.durationInLatestPhase) {
       return this.fellow.durationInLatestPhase;
     }
-    return this.fellow.weeksInLatestPhase;
+    return this.fellow.weeksInLatestPhase > 0 ? this.fellow.weeksInLatestPhase : 1;
   }
 
   get phase () {
