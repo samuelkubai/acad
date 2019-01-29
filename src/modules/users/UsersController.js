@@ -9,6 +9,300 @@ const error = debug("app:error");
 
 class UsersController {
   static async getUsers(req, res) {
+    res.status(200)
+      .json({
+        "data": {
+          "users": [
+            {
+              "name": "Samson Negedu",
+              "phase": 3,
+              "picture": "https://lh4.googleusercontent.com/-MCWylcvnkPE/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-j_Ixh3wWfR7OMIUfmMNzGOfvPA2Q/mo/photo.jpg?sz=50",
+              "readiness": "64%",
+              "raw_velocity": 22,
+              "velocity": "22/wk",
+              "skills": "18/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "samson.negedu@andela.com"
+            },
+            {
+              "name": "Stephen Aribaba",
+              "phase": 3,
+              "picture": "https://lh4.googleusercontent.com/-gL1hNyo--WE/AAAAAAAAAAI/AAAAAAAAABE/CY4uVZFAaaU/photo.jpg?sz=50",
+              "readiness": "64%",
+              "raw_velocity": 27,
+              "velocity": "27/wk",
+              "skills": "18/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "stephen.aribaba@andela.com"
+            },
+            {
+              "name": "John Mutuma",
+              "phase": 3,
+              "picture": "https://lh5.googleusercontent.com/-fPdDPL5C1HQ/AAAAAAAAAAI/AAAAAAAAAA0/BQmNtL3fd9c/photo.jpg?sz=50",
+              "readiness": "75%",
+              "raw_velocity": 50,
+              "velocity": "50/wk",
+              "skills": "21/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "john.mutuma@andela.com"
+            },
+            {
+              "name": "Ademola Ariya",
+              "phase": 3,
+              "picture": "https://lh5.googleusercontent.com/-zlpT4ktGXoI/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-jtnFZbXXqBLFlbJCJqKK5-eaQVLw/mo/photo.jpg?sz=50",
+              "readiness": "86%",
+              "raw_velocity": 41,
+              "velocity": "41/wk",
+              "skills": "23/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "ademola.ariya@andela.com"
+            },
+            {
+              "name": "Dave Njeru",
+              "phase": 3,
+              "picture": "https://lh3.googleusercontent.com/-rMPAg17z4Fk/AAAAAAAAAAI/AAAAAAAAABI/yBuKxOVxk3Y/photo.jpg?sz=50",
+              "readiness": "25%",
+              "raw_velocity": 10,
+              "velocity": "10/wk",
+              "skills": "7/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "dave.njeru@andela.com"
+            },
+            {
+              "name": "Janet Wairimu",
+              "phase": 3,
+              "picture": "https://lh4.googleusercontent.com/-y6Mts6_3dJ0/AAAAAAAAAAI/AAAAAAAAAAA/AKxrwcYAr6NDfv04D-JIbSipDQxCYICYog/mo/photo.jpg?sz=50",
+              "readiness": "21%",
+              "raw_velocity": 7,
+              "velocity": "7/wk",
+              "skills": "6/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "janet.wairimu@andela.com"
+            },
+            {
+              "name": "Rachael Asami",
+              "phase": 3,
+              "picture": "https://lh5.googleusercontent.com/-PzU4-zImXEI/AAAAAAAAAAI/AAAAAAAAAAA/AKxrwcZHzDpBwRLf_gsmPNJ5ynV53rvHMQ/mo/photo.jpg?sz=50",
+              "readiness": "57%",
+              "raw_velocity": 19,
+              "velocity": "19/wk",
+              "skills": "14/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "rachael.asami@andela.com"
+            },
+            {
+              "name": "Dennis Wanjiru",
+              "phase": 3,
+              "picture": "https://lh5.googleusercontent.com/-V6XNf3iCNvo/AAAAAAAAAAI/AAAAAAAAAAc/8GGsfiPhTlc/photo.jpg?sz=50",
+              "readiness": "43%",
+              "raw_velocity": 35,
+              "velocity": "35/wk",
+              "skills": "10/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "dennis.wanjiru@andela.com"
+            },
+            {
+              "name": "Michael Nthiwa",
+              "phase": 3,
+              "picture": "https://lh4.googleusercontent.com/-ZtUrHG2pIQI/AAAAAAAAAAI/AAAAAAAAAAA/AKxrwcaXLLvZvCrF8SU4hNFn9ona5GobCw/mo/photo.jpg?sz=50",
+              "readiness": "29%",
+              "raw_velocity": 24,
+              "velocity": "24/wk",
+              "skills": "8/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "michael.nthiwa@andela.com"
+            },
+            {
+              "name": "Victor Ugwueze",
+              "phase": 2,
+              "picture": "https://lh5.googleusercontent.com/-fMXOfGe2Kbg/AAAAAAAAAAI/AAAAAAAAAAg/WSHGhev9ZNQ/photo.jpg?sz=50",
+              "readiness": "32%",
+              "raw_velocity": 22,
+              "velocity": "22/wk",
+              "skills": "7/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "victor.ugwueze@andela.com"
+            },
+            {
+              "name": "Chisom Obuladike",
+              "phase": 2,
+              "picture": "https://lh3.googleusercontent.com/-VPaFgQjET08/AAAAAAAAAAI/AAAAAAAAAAA/AKxrwcaSiBbMxqK-jkO5SunC_Tvsx0i-yw/mo/photo.jpg?sz=50",
+              "readiness": "14%",
+              "raw_velocity": 22,
+              "velocity": "22/wk",
+              "skills": "4/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "chisom.obuladike@andela.com"
+            },
+            {
+              "name": "Moses Gitau",
+              "phase": 2,
+              "picture": "https://lh6.googleusercontent.com/-hHPqXkzi9LE/AAAAAAAAAAI/AAAAAAAAAAc/nBLhFcMdzkQ/photo.jpg?sz=50",
+              "readiness": "29%",
+              "raw_velocity": 22,
+              "velocity": "22/wk",
+              "skills": "7/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "moses.gitau@andela.com"
+            },
+            {
+              "name": "Moffat Gitau",
+              "phase": 2,
+              "picture": "https://lh3.googleusercontent.com/-GndNwsNM0HI/AAAAAAAAAAI/AAAAAAAAAAc/0kPTNBhCkXU/photo.jpg?sz=50",
+              "readiness": "7%",
+              "raw_velocity": 4,
+              "velocity": "4/wk",
+              "skills": "2/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "moffat.gitau@andela.com"
+            },
+            {
+              "name": "William Sserubiri",
+              "phase": 3,
+              "picture": "https://lh6.googleusercontent.com/-JznmEmIIMek/AAAAAAAAAAI/AAAAAAAAAAc/KBISMb5Pa1E/photo.jpg?sz=50",
+              "readiness": "21%",
+              "raw_velocity": 8,
+              "velocity": "8/wk",
+              "skills": "6/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "william.sserubiri@andela.com"
+            },
+            {
+              "name": "Ronald Ndirangu",
+              "phase": 3,
+              "picture": "https://lh6.googleusercontent.com/--MWn6ZsbsqY/AAAAAAAAAAI/AAAAAAAAAAw/IDxtzW5nRwM/photo.jpg?sz=50",
+              "readiness": "54%",
+              "raw_velocity": 18,
+              "velocity": "18/wk",
+              "skills": "14/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "ronald.ndirangu@andela.com"
+            },
+            {
+              "name": "Emeka Chinedu",
+              "phase": 3,
+              "picture": "https://lh3.googleusercontent.com/-gBMYxLL0iEY/AAAAAAAAAAI/AAAAAAAAACw/bwMfUN4B2Bw/photo.jpg?sz=50",
+              "readiness": "54%",
+              "raw_velocity": 30,
+              "velocity": "30/wk",
+              "skills": "14/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "emeka.chinedu@andela.com"
+            },
+            {
+              "name": "Celestine Ekoh-Ordan",
+              "phase": 3,
+              "picture": "https://lh5.googleusercontent.com/-xk0tlwMiYU8/AAAAAAAAAAI/AAAAAAAAAAc/UsqgiaqPwNE/photo.jpg?sz=50",
+              "readiness": "50%",
+              "raw_velocity": 15,
+              "velocity": "15/wk",
+              "skills": "12/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "celestine.ekoh-ordan@andela.com"
+            },
+            {
+              "name": "Kevin Koech",
+              "phase": 2,
+              "picture": "https://lh6.googleusercontent.com/-gqegbA4lDbw/AAAAAAAAAAI/AAAAAAAAAAc/_ENwek7Tv4U/photo.jpg?sz=50",
+              "readiness": "32%",
+              "raw_velocity": 19,
+              "velocity": "19/wk",
+              "skills": "7/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "kevin.koech@andela.com"
+            },
+            {
+              "name": "David Muhanguzi",
+              "phase": 2,
+              "picture": "https://lh4.googleusercontent.com/-69ENY331AQw/AAAAAAAAAAI/AAAAAAAAAAA/AKxrwcbm4kgf2c98C9dOmNliyJmVG-igPw/mo/photo.jpg?sz=50",
+              "readiness": "29%",
+              "raw_velocity": 12,
+              "velocity": "12/wk",
+              "skills": "7/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "david.muhanguzi@andela.com"
+            },
+            {
+              "name": "Adeniyi Adeyokunnu",
+              "phase": 2,
+              "picture": "https://lh3.googleusercontent.com/-RQgXVd3Fn50/AAAAAAAAAAI/AAAAAAAAAAg/hNrC_g7uNCw/photo.jpg?sz=50",
+              "readiness": "21%",
+              "raw_velocity": 18,
+              "velocity": "18/wk",
+              "skills": "6/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "adeniyi.adeyokunnu@andela.com"
+            },
+            {
+              "name": "Samuel Kubai",
+              "phase": 1,
+              "picture": "https://lh6.googleusercontent.com/-pbunDpOqvmU/AAAAAAAAAAI/AAAAAAAAAAc/NQfWbn0fLn4/photo.jpg?sz=50",
+              "readiness": "71%",
+              "raw_velocity": 319,
+              "velocity": "319/wk",
+              "skills": "18/28",
+              "team": "Travela",
+              "status": "on-track",
+              "email": "samuel.kubai@andela.com"
+            },
+            {
+              "name": "Loice Meyo",
+              "phase": 3,
+              "picture": "https://lh3.googleusercontent.com/-c_B7QVDLz70/AAAAAAAAAAI/AAAAAAAAAAc/ibqk3a2jG9w/photo.jpg?sz=50",
+              "readiness": "54%",
+              "raw_velocity": 20,
+              "velocity": "20/wk",
+              "skills": "15/28",
+              "team": "Travela",
+              "status": "off-track",
+              "email": "loice.meyo@andela.com"
+            },
+            {
+              "name": "Collins Muru",
+              "phase": 1,
+              "picture": "https://lh3.googleusercontent.com/-tS2sJum2mtY/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-iNZBEm8hurd1cw0zNHrAEZeYhe7g/mo/photo.jpg?sz=50",
+              "readiness": "54%",
+              "raw_velocity": 234,
+              "velocity": "234/wk",
+              "skills": "14/28",
+              "team": "Travela",
+              "status": "on-track",
+              "email": "collins.muru@andela.com"
+            }
+          ],
+          "team_stats": {
+            "ready_fellows": 0,
+            "fellows_on_track": 2,
+            "team_total_velocity": 998
+          }
+        },
+        "meta": {
+          "count": 23
+        }
+      });
+
+    return;
+
     const team_slug = req.query.team;
     const user = req.meta.user.UserInfo;
 
@@ -104,6 +398,9 @@ class UsersController {
           count: users.length
         }
       });
+
+
+
   }
 
   static async inviteUser (req, res) {
