@@ -9,6 +9,16 @@ class VelocityController {
     const fellow = await Models.User.findOne({
       include: [
         {
+          as: 'team',
+          model: Models.Team,
+          include: [
+            {
+              as: 'repositories',
+              model: Models.Repository
+            }
+          ]
+        },
+        {
           as: 'phases',
           model: Models.Phase
         },
@@ -22,7 +32,11 @@ class VelocityController {
 
     logger(`VelocityController: (${fellow.email}) picked up the fellow ${fellow.name}`);
 
-    const gitbase = new Gitbase({ email: fellow.email, usernames: fellow.gh_accounts.map(account => account.username) });
+    const gitbase = new Gitbase({
+      email: fellow.email,
+      repositories: fellow.team.repositories.map(repository => repository.url),
+      usernames: fellow.gh_accounts.map(account => account.username)
+    });
     await gitbase.initialize();
 
     const [stacks, feed] = await Promise.all([

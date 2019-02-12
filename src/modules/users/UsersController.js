@@ -324,7 +324,13 @@ class UsersController {
       include: [
         {
           as: 'team',
-          model: Models.Team
+          model: Models.Team,
+          include: [
+            {
+              as: 'repositories',
+              model: Models.Repository
+            }
+          ]
         },
         {
           as: 'phases',
@@ -387,9 +393,6 @@ class UsersController {
           count: users.length
         }
       });
-
-
-
   }
 
   static async inviteUser (req, res) {
@@ -443,6 +446,34 @@ class UsersController {
       });
     });
 
+    const user_object = await Models.User.findOne({
+      where: {
+        id: invited_user.id
+      },
+      include: [
+        {
+          as: 'team',
+          model: Models.Team,
+          include: [
+            {
+              as: 'repositories',
+              model: Models.Repository
+            }
+          ]
+        },
+        {
+          as: 'phases',
+          model: Models.Phase
+        },
+        {
+          as: 'gh_accounts',
+          model: Models.GHAccount
+        }
+      ]
+    });
+
+    const fellow = new Fellow(user_object);
+    await fellow.refreshStats();
 
     res
       .status(201)
@@ -456,6 +487,8 @@ class UsersController {
         meta:{
           count: 1,
           email: req.body.email,
+          phase: fellow.phase,
+          status: fellow.status,
           team: req.params.team
         }
       });

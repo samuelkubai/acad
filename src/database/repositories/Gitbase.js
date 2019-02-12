@@ -7,13 +7,12 @@ import Env from '../../config/environment'
 const logger = debug('app:repositories');
 
 const octokit = require('@octokit/rest')();
-const owner = `andela`;
-const repos = ['travel_tool_back', 'travel_tool_front'];
 
 export default class Gitbase {
-  constructor({ email, usernames }) {
+  constructor({ email, usernames, repositories }) {
     this.email = email;
     this.usernames = usernames;
+    this.repositories= repositories
   }
 
   async initialize() {
@@ -23,19 +22,22 @@ export default class Gitbase {
     logger(this.usernames);
 
     // Fetch all the commits from all related repositories
-    this.commits = await Promise.map(repos, async repo => {
+    this.commits = await Promise.map(this.repositories, async repo => {
+      const repo_breakdown = repo.split('/')
+        .filter(elem => elem.trim() !== '' && elem.trim() !== 'https:' && elem.trim() !== 'github.com');
+
       // For each username fetch all the commits
       const response = await Promise.map(this.usernames, async username => {
-        const raw_response = await octokit.repos.listCommits({ owner, repo, author: username });
+        const raw_response = await octokit.repos.listCommits({ owner: repo_breakdown[0], repo: repo_breakdown[1], author: username });
         return raw_response.data
       });
 
       const commit_hashes = _.uniq(_.flattenDeep(response).map(commit => commit.sha));
 
-      logger(`Gitbase: (${this.email}) got ${commit_hashes.length} commits authored on the ${repo} github repo by ${this.email}`);
+      logger(`Gitbase: (${this.email}) got ${commit_hashes.length} commits authored on the ${repo_breakdown[1]} github repo by ${this.email}`);
 
       return await Promise.map(commit_hashes, async sha => {
-        const response = await octokit.repos.getCommit({owner, repo, sha});
+        const response = await octokit.repos.getCommit({owner: repo_breakdown[0], repo: repo_breakdown[1], sha});
 
         return response.data;
       });

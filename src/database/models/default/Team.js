@@ -16,6 +16,11 @@ export default (sequelize, DataTypes) => {
       as: 'users',
       foreignKey: 'team_id'
     });
+
+    Team.hasMany(models.Repository, {
+      as: 'repositories',
+      foreignKey: 'team_id'
+    });
   };
 
   return Team;

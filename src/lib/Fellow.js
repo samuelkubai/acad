@@ -18,7 +18,11 @@ export default class Fellow {
   }
 
   async refreshStats() {
-    const gitbase = new Gitbase({ email: this.fellow.email, usernames: this.fellow.gh_accounts.map(account => account.username) });
+    const gitbase = new Gitbase({
+      email: this.fellow.email,
+      usernames: this.fellow.gh_accounts.map(account => account.username),
+      repositories: this.fellow.team.repositories.map(repository => repository.url)
+    });
     await gitbase.initialize();
 
     this.iols = await gitbase.IOL.all(this.fellow.email);

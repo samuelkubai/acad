@@ -6,6 +6,16 @@ class AnalyticsController {
     const user = await Models.User.findOne({
       include: [
         {
+          as: 'team',
+          model: Models.Team,
+          include: [
+            {
+              as: 'repositories',
+              model: Models.Repository
+            }
+          ]
+        },
+        {
           as: 'phases',
           model: Models.Phase
         },

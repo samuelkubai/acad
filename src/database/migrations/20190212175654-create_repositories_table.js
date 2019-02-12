@@ -2,23 +2,19 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('teams', {
+    return queryInterface.createTable('repositories', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
       },
-      name: {
+      url: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      slug: {
+      team_id: {
         allowNull: false,
-        type: Sequelize.STRING
-      },
-      logo: {
-        allowNull: true,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE
@@ -26,6 +22,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('teams');
+    return queryInterface.dropTable('repositories');
   }
 };
