@@ -5,199 +5,143 @@ module.exports = {
     return queryInterface.bulkInsert('skills', [
       {
         id: 1,
-        label: "Working with reducers in redux saga",
-        slug: "redux-reducers",
-        regex: ".*/redux/reducers/.*",
-        stack_id: 6
+        label: "Rails endpoints",
+        slug: "rails-router",
+        regex: ".*routes\.rb",
+        stack_id: 2
       },
       {
         id: 2,
-        label: "Testing redux saga reducers",
-        slug: "testing-redux-reducers",
-        regex: ".*/redux/reducers/__tests__/.*",
-        stack_id: 7
+        label: "Active record models",
+        slug: "rails-models",
+        regex: ".*\/models\/[^\/]*.rb",
+        stack_id: 2
       },
       {
         id: 3,
-        label: "Handling the saga with redux sagas",
-        slug: "redux-sagas",
-        regex: ".*/redux/middleware/.*",
-        stack_id: 6
+        label: "Controller interaction & querying?",
+        slug: "rails-controller",
+        regex: ".*\/controllers\/[^\/]*.rb",
+        stack_id: 2
       },
       {
         id: 4,
-        label: "Testing sagas in redux sagas",
-        slug: "testing-redux-sagas",
-        regex: ".*/redux/middleware/__tests__/.*",
-        stack_id: 7
+        label: "Notification & service worker streaming",
+        slug: "rails-channels",
+        regex: ".*\/channels\/.*",
+        stack_id: 2
       },
       {
         id: 5,
-        label: "Utilizing action creators in redux sagas",
-        slug: "redux-action-creators",
-        regex: ".*/redux/actionCreator/.*",
-        stack_id: 6
+        label: "Background jobs",
+        slug: "rails-jobs",
+        regex: ".*\/jobs\/[^\/]*.rb",
+        stack_id: 2
       },
       {
         id: 6,
-        label: "Testing use of redux action creators in redux sagas",
-        slug: "testing-redux-action-creators",
-        regex: ".*/redux/actionCreator/__tests__/.*",
-        stack_id: 7
+        label: "Mailing",
+        slug: "rails-mailer",
+        regex: ".*\/mailers\/.*",
+        stack_id: 2
       },
       {
         id: 7,
-        label: "Styling react components with SASS",
-        slug: "sass",
-        regex: ".*scss$",
-        stack_id: 5
+        label: "Model presenters",
+        slug: "rails-presenters",
+        regex: ".*\/presenters\/.*",
+        stack_id: 2
       },
       {
         id: 8,
-        label: "Building react components",
-        slug: "react-components",
-        regex: ".*/components/(?!__tests__).*/.*",
+        label: "ERB Views",
+        slug: "rails-views",
+        regex: ".*\/views\/.*",
         stack_id: 2
       },
       {
         id: 9,
-        label: "Writing tests for react components",
-        slug: "testing-react-components",
-        regex: ".*/components/.*/__tests__/.*",
-        stack_id: 7
+        label: "Database schema & migrations",
+        slug: "rails-db",
+        regex: ".*\/db\/.*",
+        stack_id: 2
       },
       {
         id: 10,
-        label: "Hooking up routing in react SPAs",
-        slug: "react-routing",
-        regex: ".*/routes/index.js$",
+        label: "Unit testing controllers",
+        slug: "rails-testing-controllers",
+        regex: ".*\/spec\/controllers\/.*",
         stack_id: 2
       },
       {
         id: 11,
-        label: "Building react higher order components",
-        slug: "react-higher-order-components",
-        regex: "..*hoc.*|.*Hoc.*",
+        label: "Testing factories",
+        slug: "rails-testing-factories",
+        regex: ".*\/spec\/factories\/.*",
         stack_id: 2
       },
       {
         id: 12,
-        label: "Testing react higher order components",
-        slug: "testing-react-higher-order-components",
-        regex: ".*/hoc/__tests__/.*|.*/Hoc/__tests__/.*",
-        stack_id: 7
+        label: "End to end testing",
+        slug: "rails-testing-end-to-end",
+        regex: ".*\/(spec\/features|helpers)\/.*",
+        stack_id: 2
       },
       {
         id: 13,
-        label: "Integrating react components to react views",
-        slug: "react-views",
-        regex: ".*/views/.*",
+        label: "Testing jobs",
+        slug: "rails-testing-jobs",
+        regex: ".*\/spec\/jobs\/.*",
         stack_id: 2
       },
       {
         id: 14,
-        label: "Writing react integration tests",
-        slug: "react-integration-tests",
-        regex: ".*/views/.*/__tests__/.*",
-        stack_id: 7
+        label: "Unit testing models",
+        slug: "rails-testing-models",
+        regex: ".*\/spec\/models\/.*",
+        stack_id: 2
       },
       {
         id: 15,
-        label: "Setting up API services in react",
-        slug: "react-services",
-        regex: ".*/services/.*",
+        label: "Rails testing modules",
+        slug: "rails-testing-modules",
+        regex: ".*\/spec\/support\/.*",
         stack_id: 2
       },
       {
         id: 16,
-        label: "Writing tests for API react services",
-        slug: "testing-react-services",
-        regex: ".*/services/__tests__/.*",
-        stack_id: 7
+        label: "All round ruby",
+        slug: "ruby-all",
+        regex: "(.*\/*.rb$)|.*Gemfile",
+        stack_id: 1
       },
       {
         id: 17,
-        label: "Working on Node controllers",
-        slug: "node-controllers",
-        regex: ".*Controller.js$",
-        stack_id: 1
+        label: "Api consumption (CS)",
+        slug: "coffeescript-api",
+        regex: ".*\/javascripts\/api.*..coffee",
+        stack_id: 3
       },
       {
         id: 18,
-        label: "Building middleware for NodeJS",
-        slug: "node-middlewares",
-        regex: ".*/middlewares/.*",
-        stack_id: 1
+        label: "Interactive UI (CS)",
+        slug: "coffeescript-ui",
+        regex: ".*\/javascripts\/ui.*..coffee",
+        stack_id: 3
       },
       {
         id: 19,
-        label: "Hooking up routes with Express",
-        slug: "node-routes",
-        regex: ".*/modules/.*/index.js$",
-        stack_id: 1
+        label: "Other js (CS)",
+        slug: "coffeescript-other",
+        regex: ".*\/javascripts\/[^(api|ui)].*.coffee$",
+        stack_id: 3
       },
       {
         id: 20,
-        label: "Creating migrations in NodeJS",
-        slug: "node-migrations",
-        regex: ".*/migrations/.*",
-        stack_id: 1
-      },
-      {
-        id: 21,
-        label: "Seeding data in NodeJS",
-        slug: "node-seeders",
-        regex: ".*/seeders/.*",
-        stack_id: 1
-      },
-      {
-        id: 22,
-        label: "Setting up models on NodeJS",
-        slug: "node-models",
-        regex: ".*/models/.*",
-        stack_id: 1
-      },
-      {
-        id: 23,
-        label: "Properly handle exceptions on NodeJS",
-        slug: "node-exceptions",
-        regex: ".*/exceptions/.*",
-        stack_id: 1
-      },
-      {
-        id: 24,
-        label: "Writing tests for exceptions in NodeJS",
-        slug: "testing-node-exceptions",
-        regex: ".*/exceptions/__tests__/.*",
-        stack_id: 7
-      },
-      {
-        id: 25,
-        label: "Encapsulating business logic in NodeJS applications",
-        slug: "node-business-logic",
-        regex: ".*/helpers/.*",
-        stack_id: 1
-      },
-      {
-        id: 26,
-        label: "Properly testing business logic on NodeJS applications",
-        slug: "testing-node-business-logic",
-        regex: ".*/helpers/.*__tests__/.*",
-        stack_id: 7
-      },
-      {
-        id: 27,
-        label: "Writing proper mocks on NodeJS applications",
-        slug: "node-mocks",
-        regex: ".*mocks.*",
-        stack_id: 1
-      },
-      {
-        id: 28,
-        label: "Writing proper integration tests on NodeJS",
-        slug: "node-integration-test",
-        regex: ".*/modules/.*/__tests__/.*",
-        stack_id: 7
+        label: "Styling with SASS",
+        slug: "sass-styling",
+        regex: ".*\/stylesheets\/.*.scss$",
+        stack_id: 4
       }
     ], {});
   },
