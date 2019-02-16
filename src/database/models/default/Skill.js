@@ -16,9 +16,15 @@ export default (sequelize, DataTypes) => {
 
   Skill.associate = models => {
     Skill.belongsTo(models.Stack, {
-      allowNull: true,
+      allowNull: false,
       foreignKey: 'stack_id',
       as: 'stack'
+    });
+
+    Skill.belongsTo(models.Team, {
+      allowNull: false,
+      foreignKey: 'team_id',
+      as: 'team'
     });
 
     Skill.hasMany(models.Target, {

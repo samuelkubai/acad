@@ -162,6 +162,14 @@ module.exports = {
         andela_id: 'LT2Pgjb2os_fE5yxSf9',
         team_id: 1,
         profile_picture: 'https://lh3.googleusercontent.com/-RQgXVd3Fn50/AAAAAAAAAAI/AAAAAAAAAAg/hNrC_g7uNCw/photo.jpg?sz=50'
+      },
+      {
+        id: 22,
+        name: 'Chris Nyaga',
+        email: 'chris.nyaga@andela.com',
+        andela_id: 'JGBB3SKNDKS2SDKJ2',
+        team_id: 2,
+        profile_picture: 'https://lh6.googleusercontent.com/-8TQxurp1NFM/AAAAAAAAAAI/AAAAAAAAAC0/ypqLW1CIO3U/photo.jpg?sz=50'
       }
     ], {});
   },

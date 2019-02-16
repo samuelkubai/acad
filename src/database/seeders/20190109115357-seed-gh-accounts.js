@@ -164,6 +164,12 @@ module.exports = {
         user_id: 14,
         email: '4fr0c0d3@Moffats-MacBook-Pro.local',
         username: '4fr0c0d3@Moffats-MacBook-Pro.local'
+      },
+      {
+        id: 29,
+        user_id: 22,
+        email: 'chris.nyaga@andela.com',
+        username: 'bigzoo'
       }
     ], {});
   },

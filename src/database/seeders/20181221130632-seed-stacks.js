@@ -44,6 +44,24 @@ module.exports = {
         name: 'Jest',
         slug: 'jest',
         icon: "https://res.cloudinary.com/kubai/image/upload/v1546791876/jest-icon.svg",
+      },
+      {
+        id: 21,
+        name: 'Ruby',
+        slug: 'ruby',
+        icon: "https://res.cloudinary.com/bigzoo/image/upload/v1550138425/Ruby.svg",
+      },
+      {
+        id: 22,
+        name: 'Rails',
+        slug: 'rails',
+        icon: "https://res.cloudinary.com/bigzoo/image/upload/v1550138421/Rails.svg"
+      },
+      {
+        id: 23,
+        name: "CoffeeScript",
+        slug: "coffeescript",
+        icon: "https://res.cloudinary.com/bigzoo/image/upload/v1550143442/Coffeescript.svg"
       }
     ], {});
   },

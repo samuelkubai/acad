@@ -102,6 +102,11 @@ module.exports = {
         user_id: 21,
         phase_id: 1,
         started_on: '2018-12-10'
+      },
+      {
+        user_id: 22,
+        phase_id: 1,
+        started_on: '2018-11-10'
       }
     ], {});
   },

@@ -11,6 +11,12 @@ module.exports = {
       },
       {
         id: 2,
+        name: 'VOF',
+        slug: 'vof',
+        logo: 'https://res.cloudinary.com/kubai/image/upload/v1546371777/travela.svg'
+      },
+      {
+        id: 3,
         name: 'Converge',
         slug: 'converge',
         logo: 'https://res.cloudinary.com/kubai/image/upload/v1546371777/travela.svg'

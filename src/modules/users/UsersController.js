@@ -3,9 +3,11 @@ import debug from "debug";
 import shortid from "shortid";
 import Models from '../../database/models';
 import Fellow from "../../lib/Fellow";
+import Cache from '../../services/Cache';
 
 const logger = debug("app:controllers");
 const error = debug("app:error");
+const cache = new Cache();
 
 class UsersController {
   static async getUsers(req, res) {
@@ -291,6 +293,13 @@ class UsersController {
     //   });
     //
     // return;
+    const cachedResponse = await cache.get(req.originalUrl);
+    if (cachedResponse) {
+      res.status(200)
+        .json(cachedResponse);
+
+      return;
+    }
 
     const team_slug = req.query.team;
     const user = req.meta.user.UserInfo;
@@ -383,16 +392,20 @@ class UsersController {
       teamStats.team_total_velocity += user.raw_velocity;
     });
 
+    const response = {
+      data: {
+        users: userResponse,
+        team_stats: teamStats
+      },
+      meta: {
+        count: users.length
+      }
+    };
+
+    await cache.set(req.originalUrl, response);
+
     res.status(200)
-      .json({
-        data: {
-          users: userResponse,
-          team_stats: teamStats
-        },
-        meta: {
-          count: users.length
-        }
-      });
+      .json(response);
   }
 
   static async inviteUser (req, res) {

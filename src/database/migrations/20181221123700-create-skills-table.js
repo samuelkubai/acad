@@ -20,12 +20,15 @@ module.exports = {
       },
       regex: {
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: true
+        type: Sequelize.STRING
       },
       stack_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
+      },
+      team_id: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE

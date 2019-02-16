@@ -13,6 +13,23 @@ export default class IOL {
   }
 
   async all(email) {
+    // Fetch the user's team id
+    const fellow = await Models.User.findOne({
+      include: [
+        {
+          as: 'team',
+          model: Models.Team,
+          include: [
+            {
+              as: 'repositories',
+              model: Models.Repository
+            }
+          ]
+        },
+      ],
+      where: { email }
+    });
+
     // Fetch the all the appropriate skills; with stack and target
     const skills = await Models.Skill.findAll({
       include: [
@@ -24,7 +41,8 @@ export default class IOL {
           as: 'targets',
           model: Models.Target
         }
-      ]
+      ],
+      where: { team_id: fellow.team.id }
     });
 
     logger(`IOL: (${email}) fetched ${skills.length} related skill(s)`);

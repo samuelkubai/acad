@@ -2,7 +2,6 @@ import Redis from 'redis';
 import Env from '../config/environment';
 import debug from "debug";
 import { promisify } from 'util';
-import Models from "../database/models";
 
 const logger = debug("app:services");
 const error = debug("app:error");
@@ -28,24 +27,26 @@ export default class Cache {
     this.client.set = promisify(this.client.set);
   }
 
-  async queryProxy(query, options) {
-    const key = JSON.stringify(query);
-
+  async get(key) {
     // Check if this query was cached before
+    logger(`Cache: Checking for cached record: ${key}`);
     const cacheValue = await this.client.get(key);
 
     // Return the value cached if cache exists
     if (cacheValue) {
+      logger(`Cache: Found a cache record for: ${key}`);
       return JSON.parse(cacheValue);
     }
 
-    // Query the database if cache does not exist
-    const result = await Models.connections.gitbase.query(query, options);
+    logger(`Cache: No cache record found for: ${key}`);
+    return cacheValue;
+  }
 
+  async set(key, value) {
     // Cache the query results
-    await this.client.set(key, JSON.stringify(result));
+    logger(`Cache: Caching a new record for: ${key}`);
+    await this.client.set(key, JSON.stringify(value), 'EX', 1800);
 
-    // Return the results
-    return result;
+    return true;
   }
 }
